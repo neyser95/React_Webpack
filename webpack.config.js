@@ -13,14 +13,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['react', 'babel-preset-env', 'es2015']
-            },
-          }
-        ]
+        use: ['babel-loader']
       },
       {
         test: /\.scss$/,
@@ -41,8 +34,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: './index.html',
-      template: './index.html'
+      filename: 'index.html',
+      template: 'index.html',
+      chunksSortMode: 'dependency',
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
